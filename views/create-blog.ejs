@@ -1,0 +1,37 @@
+<html>
+    <%- include("./partials/head.ejs") %>
+    <head>
+        <title>Blogs</title>
+    </head>
+    <body >
+
+        <%- include("./partials/nav.ejs") %>
+
+        <nav>
+            <div class="site-title">
+                <a href="/"><h1>Blog Page example</h1></a>
+                <p>Associated with Biztron Softech</p>
+            </div>
+            <ul>
+                <li><a href="/">Blogs</a></li>
+                 <li><a href="/blogs">New Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="create-blog content">
+            <form action="/blogs" method="post">
+                <label for="Img">Upload Image</label>
+                <input type="file" id="img" required>
+                <label for="Name">Name</label>
+                <input type="text" id="name" required>
+                <label for="title">Title</label>
+                <input type="text" id="title" required>
+                <label for="description">Description</label>
+                <textarea id="description" required></textarea>
+                <label for="Date">Date: </label>
+                <input type="text" name="txtdatetime"> 
+                <button>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog Page</title>
+    </head>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+        <nav>
+            <div class="site-title">
+                <a href="/blogs"><h1>Blogs</h1></a>
+                <p>Welcome to the Blog Page</p>
+            </div>
+            <ul>
+                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/services">Services</a></li>
+            </ul>
+        </nav>
+
+        <div class="blogs-content">
+            <h2>All Blogs</h2>
+
+                <% if (blog.length > 0) { %>
+                    <% blogs.forEach(blog => { %>
+                        <h3></h3>
+                        <p></p> 
+                    <% }) %>
+                <% } %>         
+
+        </div>
+
+        <%- include("./partials/footer.ejs") %>
+    </body>
+</html>
