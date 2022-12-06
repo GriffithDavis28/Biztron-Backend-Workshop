@@ -15,10 +15,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 
-app.set("view engine", "ejs");
-
 app.get("/upload", (req,res) => {
-    res.render("upload");
+    res.sendFile('Images', { root: __dirname});
+    console.log("Log is being made but cannot GET is the response in POSTMAN");
 });
 
 app.post("/upload", upload.single('image') , (req,res) => {
