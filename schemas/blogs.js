@@ -6,7 +6,7 @@ const express = require('express');
 
 const BlogSchema = new Schema ({
     img: {
-        type: File,
+        type: String,
         required: true
     },
     name: {

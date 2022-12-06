@@ -1,5 +1,5 @@
 const express = require('express');
-const Service = require('../schemas/services');
+const Partner = require('../schemas/partners');
 const { result } = require('lodash');
 const router = express.Router();
 const app = express();
@@ -8,11 +8,11 @@ router.use(express.json());
 
 router.get("/", (req,res) => {
 
-     Service.find()
+    Partner.find()
         .then((result) => {
             res.status(200).send(result);
             console.log(result);
-            console.log("Displaying services provided....");
+            console.log("Displaying Partners we are associated with....");
         })
         .catch((err) => {
             res.status(404).send(err);
@@ -23,13 +23,13 @@ router.get("/", (req,res) => {
 
 router.post('/', (req, res) => {
   
-    const service = new Service(req.body)
+    const partner = new Partner(req.body)
  
-    service.save()
+    partner.save()
         .then((result) => {
          res.status(200).send(result);
          console.log(result);
-         console.log("Service has been added successfully....");
+         console.log("Partner has been added successfully....");
         })
         .catch((err) => {
          console.log(err);
@@ -41,11 +41,11 @@ router.get("/:id", (req,res) => {
 
     const id = req.params.id;
 
-    Service.findById(id)
+    Partner.findById(id)
         .then((result) => {
             res.status(200).send(result);
             console.log(result);
-            console.log("Specific Service has been selected....");
+            console.log("Specific Partner has been selected....");
         })
         .catch((err) => {
             res.status(404).send();

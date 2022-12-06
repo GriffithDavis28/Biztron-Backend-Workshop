@@ -35,14 +35,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage: storage})
 
-app.set("view engine", "ejs");
-
-router.post("/", upload.single('image') , (req,res) => {
-    res.send("Uploaded successfully..");
-});
-
-router.post('/', (req, res) => {
-  
+router.post('/',  (req, res) => {
      const product = new Product(req.body)
   
      product.save()

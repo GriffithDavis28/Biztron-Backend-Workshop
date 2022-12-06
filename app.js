@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const products = require('./routes/Products');
 const blogs = require('./routes/Blogs');
 const services = require('./routes/Services');
+const brands = require('./routes/Brands');
+const partners = require('./routes/Partners');
 
 const app = express();
 
@@ -19,20 +21,11 @@ mongoose.connect(URI)
 
 app.listen(4000);
 
-app.set("view engine", "ejs");
-
 app.use('/products', products);
 app.use('/blogs', blogs);
 app.use('/services', services);
-
-
-
-app.use((req,res) => {
-
-  res.status(404);
-  console.log("Error has occured..");
-});
-
+app.use('/brands', brands)
+app.use("/partners", partners);
 
 
 

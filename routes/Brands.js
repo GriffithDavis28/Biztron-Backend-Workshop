@@ -1,18 +1,32 @@
 const express = require('express');
-const Service = require('../schemas/services');
+const Brand = require('../schemas/brands');
 const { result } = require('lodash');
+const multer = require('multer');
+const bodyParser = require('body-parser');
 const router = express.Router();
 const app = express();
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, 'Images', cb)
+    },
+    filename: (req, file, cb) =>{
+        console.log(file);
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+  })
+  
+  const upload = multer({storage: storage})
 
 router.use(express.json());
 
 router.get("/", (req,res) => {
 
-     Service.find()
+    Brand.find()
         .then((result) => {
             res.status(200).send(result);
             console.log(result);
-            console.log("Displaying services provided....");
+            console.log("Displaying Brands we are associated with....");
         })
         .catch((err) => {
             res.status(404).send(err);
@@ -23,13 +37,13 @@ router.get("/", (req,res) => {
 
 router.post('/', (req, res) => {
   
-    const service = new Service(req.body)
+    const brand = new Brand(req.body)
  
-    service.save()
+    brand.save()
         .then((result) => {
          res.status(200).send(result);
          console.log(result);
-         console.log("Service has been added successfully....");
+         console.log("Brand has been added successfully....");
         })
         .catch((err) => {
          console.log(err);
@@ -41,11 +55,11 @@ router.get("/:id", (req,res) => {
 
     const id = req.params.id;
 
-    Service.findById(id)
+    Brand.findById(id)
         .then((result) => {
             res.status(200).send(result);
             console.log(result);
-            console.log("Specific Service has been selected....");
+            console.log("Specific Brand has been selected....");
         })
         .catch((err) => {
             res.status(404).send();
